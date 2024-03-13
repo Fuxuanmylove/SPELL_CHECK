@@ -49,6 +49,26 @@ def update_dictionary() -> None:
     with open("dictionary.json", "w") as dictionary:
         json.dump(words_dict, dictionary, indent=4)
         
+def delete_word() -> None:
+    while True:
+        word_to_delete = input("Enter a word to delete(Ctrl+C to exit): ").strip()
+        if re.fullmatch(word_pattern, word_to_delete):
+            break
+        else:
+            print("Invalid word")
+    try:
+        words_set.remove(word_to_delete)
+    except KeyError:
+        print("word not found")
+    else:
+        words_dict = {"words":[
+            {"word": word}
+            for word in words_set
+        ]}
+        with open("dictionary.json", "w") as dictionary:
+            json.dump(words_dict, dictionary, indent=4)
+        print("word deleted")
+        
 def build_spell_check() -> None:
     for correct_word in words_set:
         update_set_to_dict(swap_adjacent_letters(correct_word), correct_word) # wrong_word -> correct_word
@@ -71,13 +91,15 @@ def build_spell_check() -> None:
 if __name__ == "__main__":
     while True:
         try:
-            mode = int(input("Enter mode:\n1. Update dictionary\n2. Generate\n"))
+            mode = int(input("Enter mode:\n1. Update dictionary\n2. Delete word\n3. Generate\n"))
         except ValueError:
             print("Invalid mode")
             continue
         
         if mode == 1:
             update_dictionary()
+        elif mode == 2:
+            delete_word()
         else:
             print("generating...")
             build_spell_check()
