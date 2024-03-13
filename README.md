@@ -17,9 +17,9 @@ A correction dictionary is stored here
 Users can use this file to perform simple typing operations, prompt for correct spelling, and suggest correction if they misspell it. If the entered word cannot be detected or the word does not exist in the original dictionary, the user will be told that the word cannot be found in the correction dictionary
 
 # spell_check_generator.py:
-包含了三个功能，第一个功能可以让用户更新存放原本单词的字典，第二个功能是删除字典中的词，第三个功能是构建新的纠正字典。请务必在添加或删除单词之后构建新的纠正字典。
+包含了三个功能，第一个功能可以让用户更新存放原本单词的字典，第二个功能是删除字典中的词，第三个功能是构建新的纠正字典。添加或删除单词之后会自动构建新的纠正字典
 
-Contains three functions, the first of which allows users to update the dictionary where the original word is stored, the second one is to delete a word, and the last one is to build a new correction dictionary. Be sure to build a new correction dictionary after adding or deleting words.
+Contains three functions, the first of which allows users to update the dictionary where the original word is stored, the second one is to delete a word, and the last one is to build a new correction dictionary. A new correction dictionary will be built automatically after adding or deleting words.
 
 # 纠正范围：
 # Scope of corrections
