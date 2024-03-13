@@ -19,7 +19,7 @@ Users can use this file to perform simple typing operations, prompt for correct 
 # spell_check_generator.py:
 包含了三个功能，第一个功能可以让用户更新存放原本单词的字典，第二个功能是删除字典中的词，第三个功能是构建新的纠正字典。请务必在添加或删除单词之后构建新的纠正字典。
 
-Contains two functions, the first of which allows users to update the dictionary where the original word is stored, and the second is to build a new correction dictionary. Be sure to build a new correction dictionary after adding new words.
+Contains three functions, the first of which allows users to update the dictionary where the original word is stored, the second one is to delete a word, and the last one is to build a new correction dictionary. Be sure to build a new correction dictionary after adding or deleting words.
 
 # 纠正范围：
 # Scope of corrections
