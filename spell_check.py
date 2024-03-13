@@ -12,8 +12,12 @@ with open("spell_check.json", "r") as spell_check:
         wrong_to_correct[correct_word] = correct_word
   
 if __name__ == "__main__":
-    while True:      
-        word = input("enter a word(ctrl+C to exit): ").lower()
+    while True:
+        try:
+            word = input("enter a word(ctrl+C to exit): ").lower()
+        except KeyboardInterrupt:
+            print("exit successfully")
+            break
         if word in wrong_to_correct:
             if word == wrong_to_correct[word]:
                 print("correct spell")

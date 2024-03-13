@@ -36,7 +36,11 @@ words_set = {word["word"] for word in dictionary_json["words"] if re.fullmatch(w
 # code to clean dictionary.json
 def update_dictionary() -> None:
     while True:
-        new_word = input("Enter a new word(Ctrl+C to exit): ").strip()
+        try:
+            new_word = input("Enter a new word(Ctrl+C to exit): ").strip()
+        except KeyboardInterrupt:
+            print("exit successfully")
+            return
         if re.fullmatch(word_pattern, new_word):
             break
         else:
@@ -48,10 +52,17 @@ def update_dictionary() -> None:
     ]}
     with open("dictionary.json", "w") as dictionary:
         json.dump(words_dict, dictionary, indent=4)
+    print("update successfully")
+    print("generating...")
+    build_spell_check()
         
 def delete_word() -> None:
     while True:
-        word_to_delete = input("Enter a word to delete(Ctrl+C to exit): ").strip()
+        try:
+            word_to_delete = input("Enter a word to delete(Ctrl+C to exit): ").strip()
+        except KeyboardInterrupt:
+            print("exit successfully")
+            return
         if re.fullmatch(word_pattern, word_to_delete):
             break
         else:
@@ -68,6 +79,8 @@ def delete_word() -> None:
         with open("dictionary.json", "w") as dictionary:
             json.dump(words_dict, dictionary, indent=4)
         print("word deleted")
+        print("generating...")
+        build_spell_check()
         
 def build_spell_check() -> None:
     for correct_word in words_set:
@@ -95,6 +108,9 @@ if __name__ == "__main__":
         except ValueError:
             print("Invalid mode")
             continue
+        except KeyboardInterrupt:
+            print("exit successfully")
+            break
         
         if mode == 1:
             update_dictionary()
